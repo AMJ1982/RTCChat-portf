@@ -1,0 +1,9 @@
+.dockerignore
+.gitignore
+Dockerfile
+node_modules/
+build/
+docker-compose.yml
+.env
+dcu.bat
+dcd.bat

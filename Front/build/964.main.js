@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkrtcchat=self.webpackChunkrtcchat||[]).push([[964],{964:(e,t,n)=>{n.r(t),n.d(t,{default:()=>l});var r=n(7294),a=n(9250),c=n(5108);const l=function(){var e=(0,c.a)().user;return e&&void 0!==e?r.createElement(r.Fragment,null,r.createElement(a.j3,null)):r.createElement(a.Fg,{to:"login"})}}}]);

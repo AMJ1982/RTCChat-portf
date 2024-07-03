@@ -1,0 +1,15 @@
+services:
+  server:
+    image: rtcc-back
+    build: 
+      context: .      
+    ports:
+      - 4000:4000
+    environment:
+      - PSQL_URI=${PSQL_URI}
+      - TOKEN_SECRET=${TOKEN_SECRET}
+      - DB_PWD=${DB_PWD}
+      - VAPID_PUBLIC_KEY=${VAPID_PUBLIC_KEY}
+      - VAPID_PRIVATE_KEY=${VAPID_PRIVATE_KEY}
+      - VAPID_SUBJECT=${VAPID_SUBJECT}
+    container_name: rtcc-back-cont

@@ -1,0 +1,803 @@
+:root {
+  
+  /* Light theme
+   --bg: #EEF4FC;
+   --bg-item: white;
+   --list-head: black;
+   --hover-bg: #EEE;
+   --c2: rgba(254, 109, 32, 0.8);
+   --c3: #FC600A;
+   --c4: #E25103;
+   --c5: #341809;
+   --c6: #dadada;
+   --text: black;
+   --input-bg: white;
+   --input-text: black;
+   */
+  /*--bg: #EEF4FC;*/
+  --bg: #111;
+  --bg-item: rgb(32, 35, 43);
+  --bg-friend: #444;
+  --list-head: #EEE;
+  --hover-bg: rgb(52, 55, 62);
+  --c2: rgba(254, 109, 32, 0.8);
+  --c3: #FC600A;
+  --c4: #E25103;
+  --c5: #EEE;
+  --c6: #444;
+  --text: #EEE;
+  --card-text: #EEE;
+  --text-list-item: #EEE;
+  --input-bg: #555;
+  --input-text: white;
+}
+
+/* The color scheme used in Christmas theme. */
+[data-theme='xmas'] {  
+  --bg: rgb(11, 11, 26);
+  --bg-item: #FCDEE0;
+  --bg-friend: #dadada;
+  --list-head: white;
+  --hover-bg: #F37C84;
+  --c3: #950E17;
+  --c2: rgba(149,14,23, 0.7);
+  --text: black;
+  --card-text: #EEE;
+  --text-list-item: black;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+html, body {
+  background-color: var(--bg);
+  height: 100%;
+  overflow: hidden;
+}
+
+#snowfall {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  background: transparent;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  border: 1px solid  
+}
+
+/* Loader */
+.loader-ring {
+  display: block;
+  width: 60px;
+  height: 60px;
+  margin: auto;
+}
+
+.loader-ring:after {
+  content: " ";
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid var(--list-head);
+  border-color: var(--list-head) transparent var(--list-head) transparent;
+  animation: lds-dual-ring 1s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Containers and blocks */
+#container {
+  position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+  flex: 1;
+}
+
+.card-bg {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg);
+  gap: 0.5em;
+}
+
+.card-body {
+  color: var(--card-text);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  width: 400px;
+  background-color: var(--c6);
+  border-radius: 5px;
+  
+  h1 {
+    margin-bottom: 0.5em;
+  }
+}
+
+.card-below {
+  margin-top: 0.5em;
+}
+
+.card-below-link {
+  background: none;
+  cursor: pointer;
+  font-size: large;
+  color: var(--c3);
+  text-decoration: underline;
+}
+
+/* Modal */
+.modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.7);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+}
+
+/* Navigation bar */
+#nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  background-color: var(--c3);
+  height: 60px;
+  z-index: 3;
+}
+
+.nav-item {
+  margin: 0.5em;
+}
+
+#logo {
+  cursor: pointer;
+  user-select: none;
+  font-weight: bold;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* The candelabra shown in navigation bar in Christmas theme. */
+#candle-box {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  gap: 10px;
+  height: 100%;
+  width: 100px;
+  border-bottom: 7px solid rgb(2, 58, 2)
+}
+
+.candle {
+  position: relative;
+  height: 30px;
+  width: 10px;
+  background: #f8eeee;
+  box-shadow: inset 3px 0 rgba(111, 134, 160, 0.4);
+}
+
+.flame {
+  left: 2px;
+  top: -12px;
+  width: 6px;
+  height: 12px;
+  position: absolute;
+  background: #d59f3a;
+  transform-origin: 50% 100%;
+  border-radius: 40px 40px 30px 30px / 100px 100px 25px 25px;
+  animation: 
+    borders 15s ease-in-out infinite,
+    length 10s ease-in-out infinite,
+    movement 10s ease-in-out infinite;
+}
+
+@keyframes borders {
+  0%, 30%, 60%, 95% {
+    border-radius: 20px 65px 30px 30px / 100px 100px 25px 25px;
+  }
+  15%, 45%, 85%, 100% {
+    border-radius: 65px 20px 30px 40px / 100px 100px 40px 40px;   
+  }
+}
+
+@keyframes length {
+  30%, 60%, 95% {
+    transform: scale(0.9, 1.6);
+  }
+  15%, 85%, 100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes movement {
+  0%, 30%, 60%, 95% {
+    box-shadow: 2px 2px 7px rgba(213, 159, 58, 1);
+  }
+
+  15%, 85%, 100% {
+    box-shadow: 2px 2px 7px rgba(213, 159, 58, 1);
+  }
+}
+
+/* Dropdown */
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 190px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border: 1px solid var(--c5);
+  border-radius: 5px;
+  cursor: default;
+  pointer-events: none;
+  opacity: 0;
+  z-index: 3;
+  transform: translateY(-20px);
+  transition: opacity 180ms ease-in-out, transform 180ms ease-in-out;
+  color: var(--c5);
+  background-color: var(--c6);
+}
+
+.dropdown-header {
+  font-size: larger;
+  font-weight: bold;
+  padding: 0.5em;
+  margin: 0.5em;
+  text-align: start;
+}
+
+.dropdown.active > .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+  z-index: 500;
+}
+
+.dropdown.active .icon {
+  pointer-events: none;
+}
+
+/* Links */
+.link {
+  display: flex;
+  align-items:flex-start;
+  gap: 1em;
+  text-align: start;
+  padding: 0.5em;
+  cursor: pointer;
+  font-size: medium;
+  color: inherit;
+  text-decoration: none;
+  margin: 0.5em;
+  border-radius: 5px;
+  flex-wrap: wrap;
+}
+
+.link.tight {
+  padding: 0;
+}
+
+.link:hover {
+  background-color: #aaa;
+}
+
+.link-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+/* Icons */
+.icon {
+  position: relative;
+  height: 1.5em;
+  width: 1.5em;  
+  pointer-events: none;
+}
+
+.icon-div {  
+  cursor: pointer;
+  display: inline-block;
+  min-width: 1.5em;
+}
+
+.form {
+  width: 100%;
+  text-align: center;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: auto 3fr;
+  grid-auto-rows: minmax(2em, auto);
+  row-gap: 0.8em;
+  column-gap: 1em;
+  align-items: center;
+}
+
+.grid-settings {  
+  display: grid;
+  grid-template-columns: repeat(2, 2fr);
+  row-gap: 1em;
+  align-items: center;
+}
+
+.settings-img-div {
+  position: relative;
+  border: 1px solid #bbb;
+  border-radius: 5px;
+  height: 100px;
+  cursor: pointer;
+}
+
+.button-form {
+  height: 2em;
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.input {
+  color: var(--input-text);
+  border-radius: 5px;
+  height: 2em;
+  background-color: var(--input-bg);
+}
+
+#input-file {
+  display: none;
+  pointer-events: none;
+}
+
+/* Message view */
+#message-view {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;  
+  height: 100%;
+}
+
+#messages {
+  display: flex;
+  position: relative;
+  flex-direction: column;  
+  flex: 1;
+  overflow-y: scroll;
+}
+
+.no-messages {
+  position: relative;
+  margin: auto;
+  font-size: 1.5em;
+  color: var(--list-head);
+}
+
+.no-messages p {
+  text-align: center;
+}
+
+.message-bubble {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  align-items: center;
+  margin: 0.5em 0;
+  padding: 1.5em;
+  font-size: 18px;
+  max-width: 85%;
+  word-wrap: break-word;
+  color: var(--text);
+}
+
+.message-bubble .time {
+  font-size: 12px;
+  align-self: flex-end;
+}
+
+.message-bubble .text {
+  word-wrap: break-word;
+  width: 100%;
+}
+
+.message-bubble.me {
+  color: white;
+  background-color: var(--c2);  
+  border-radius: 10px 0 10px 10px;
+  margin-left: auto;
+  margin-right: 0.5em;
+
+  .edit {
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    top: 5px;
+    right: 0px;
+    width: 50px;
+    height: 30px;
+    
+    .icon {
+      height: 1.2em;
+    }
+  }
+}
+/* Edit icon is only visible if nested in .message-bubble.me */
+.edit {
+  display: none;
+}
+
+.message-bubble.friend {  
+  background-color: var(--bg-friend);  
+  border-radius: 0 10px 10px 10px;
+  margin-right: auto;
+  margin-left: 0.5em;
+
+  #sender-name {
+    display: inline;
+  }
+}
+
+/* Senders name is shown only if nested in .message-bubble.friend */
+#sender-name {
+  display: none;
+}
+
+.message-bubble-img {
+  max-height: 150px;
+  max-width: 200px;
+  cursor: pointer;
+}
+
+#contact-tools {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.5em 0;
+}
+
+#contact-tools h1 {
+  text-align: center;
+}
+
+#contact-tools.no-contacts {
+  flex-direction: column;
+  align-items: center;
+}
+
+#add-contact {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5em;
+}
+
+#find {
+  color: var(--input-text);
+  background-color: var(--input-bg);
+}
+
+::placeholder {
+  color: var(--input-text);
+  opacity: 0.7;
+}
+
+/* The toolbar in MessageView containing text fields and buttons. */
+#message-tool-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--c6);
+  border-top: 1px solid var(--c2);
+}
+
+#message-tools {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+  min-height: 60px;
+  z-index: 3;
+}
+
+#message-text-input {
+  resize: none;
+  border-radius: 5px;
+  font-size: 18px;
+  height: 27px;
+  max-height: 100px;
+  min-width: 200px;
+  outline: none;
+  color: var(--input-text);
+  background-color: var(--input-bg);
+  
+}
+
+#edit-msg-input {
+  resize: none;
+  border-radius: 5px;
+  font-size: 18px;
+  width: 100%;
+  outline: none;
+}
+
+#message-text-input:focus {
+  border-color: var(--c2);
+}
+
+#message-tools label .icon {
+  color: var(--c3);
+  cursor: pointer;
+}
+
+.attachment-div {
+  position: relative;
+  margin-top: 1em;
+  padding: 0.5em;
+}
+
+.settings {
+  height: 100px;
+  border: 1px solid #bbb;
+  border-radius: 5px;  
+  margin-top: 0;
+  padding: 0;  
+  cursor: pointer;
+}
+
+#remove-attachment {
+  cursor: pointer;
+  position: absolute;
+  top: -12px;
+  right: -12px;
+  height: 30px;
+  width: 30px;
+  font-size: 35px;
+  color: var(--c4);
+  background-color: var(--c6);
+  border: 1px solid #bbb;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: center;
+  line-height: 30px;
+}
+
+#attachment-thumb {
+  height: 70px;
+  margin: auto;
+}
+
+#fs-img {
+  border: 1px solid red;
+}
+
+/* Miscellaneous elements */
+.button {
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+}
+
+.button-form {
+  font-weight: bold;
+  color: white;
+  background-color: var(--c3);
+}
+
+.button-cancel {
+  background-color: #888;
+  border: 2px solid #888;
+}
+
+.button-send {
+  background-color: var(--c3);
+  height: 27px;
+  font-weight: bold;
+  padding: 0 5px;
+  color: white;
+}
+
+.button:hover {
+  opacity: 0.6;
+}
+
+.button:disabled {
+  opacity: 0.5;
+}
+.separator-line {
+  position: relative;
+  height: 3px;
+  background-color: var(--c3);
+}
+
+/* The list of contacts in Main view. */
+.list {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  overflow-y: auto;
+  color: var(--list-head);
+  
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: 2em;
+  padding: 1em;
+  border: 2px solid var(--bg);
+  background-color: var(--bg-item);
+  border-bottom: none;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text-list-item);
+}
+
+.user-img {
+  position: relative;
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--c2);
+}
+
+#user-img-settings {
+  height: 100%;
+}
+
+.list-item .alert {
+  position: relative;
+  color: white;
+  background-color: red;
+  width: 18px;
+  height: 18px;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.list-item:hover {
+  background-color: var(--hover-bg);
+}
+
+/* Toast-like notifications for user. */
+.notification {
+  z-index: 4;
+  padding: 1em;
+  text-align: center;
+  position: fixed;
+  max-width: 500px;
+  border: 3px solid green;
+  color: black;
+  background-color: #eee;
+  border-radius: 5px;
+  cursor: default;
+  pointer-events: none;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  transition: opacity 180ms ease-in-out, transform 180ms ease-in-out;
+}
+
+.notification.error {
+  border-color: red;
+}
+
+/* Toggle Switch for push notifications in UserMenu. */
+.switch {
+  position: relative;
+  display: block;
+  margin-top: 1em;
+  width: 46px;
+  height: 22px;
+}
+
+.switch input { 
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: var(--c3);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(23px);
+  -ms-transform: translateX(23px);
+  transform: translateX(23px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+@media screen and (max-width: 450px) {
+  #contact-tools {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .card-body {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 305px) {
+  #message-tools {
+    flex-direction: column;
+    gap: 0.5em;
+  }
+}

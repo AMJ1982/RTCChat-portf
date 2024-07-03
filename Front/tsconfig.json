@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "noImplicitAny": true,
+    "noImplicitReturns": true,
+    "strictNullChecks": true,
+    "module": "CommonJS",
+    "strict": true,
+    "lib": [
+      "ES2021",
+      "dom",
+      "WebWorker"
+    ],
+    "target": "ES6",
+    "noEmit": true,
+    "jsx": "react",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUnusedLocals": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+}
